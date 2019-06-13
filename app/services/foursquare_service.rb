@@ -20,7 +20,7 @@ class FoursquareService
    JSON.parse(resp.body)["response"]["friends"]["items"]
   end
 
-  def foursquare(client_id, client_secret, zipcode)
+  def search(client_id, client_secret, zipcode)
     resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
       req.params['client_id'] = client_id
       req.params['client_secret'] = client_secret
@@ -29,5 +29,5 @@ class FoursquareService
       req.params['query'] = 'coffee shop'
     end
     JSON.parse(resp.body)["response"]["venues"]
-  end 
+  end
 end
